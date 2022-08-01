@@ -1,0 +1,151 @@
+{% extends 'client-base.html' %}
+{%load static%}
+
+{% block content%}
+    <!-- MAIN CONTENT -->
+    <div class="main">
+            <div class="main-content project">
+                <div class="row">
+                <div class="col-12">
+                    <div class="box">
+                        <div class="box-body">
+                            <h3>Upload Job</h3>
+                            <form method="POST" action="{% url 'uploadjob'}">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12 mb-24">
+                                    <div class="form-group"> <label class="form-label">Project Title</label> <input name="title" class="form-control" placeholder="2569852"> </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12 mb-24">
+                                    <div class="form-group"> <label class="form-label">Category</label></div>
+                                    <select name="category" id="category">
+                                    <option value="Django">Django</option>
+                                    <option value="Python">Python</option>
+                                    <option value="UI/UX">UI/UX</option>
+                                    <option value="Adobe XD">Adobe XD</option>
+                                    <option value="React/Node">React/Node</option>
+                                    <option value="Flutter">Flutter</option>
+                                    <option value="Java">Java</option>
+                                    <option value="C#">C#</option>
+                                    <option value="C++">C++</option>
+                                    <option value="C">C</option>
+                                    <option value="Javascript">Javascript</option>
+                                    <option value="AI specialist">AI specialist</option>
+                                    <option value="Data scientist">Data scientist</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12 mb-24">
+                                    <div class="form-group"> <label class="form-label">Job description</label> <input name="description" class="form-control" placeholder="enter project description"> </div>
+                                </div>
+                            </div>
+                            <div class="gr-btn mt-15"> <button type="submit" class="btn btn-danger btn-lg mr-15 fs-16">CLEAR</button> <button type="submit" class="btn btn-primary btn-lg fs-16" >SUBMIT</button> </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <div class="box f-height">
+                        <div class="box-header d-flex justify-content-between">
+                            <h3 class="mt-9 fs-22">Uploaded jobs</h3>
+                        </div>
+                        {% for job in jobs %}
+                            <div class="box left-dot">
+                                <div class="box-body">
+                                    <div class="row">
+                                        <div class="col-12 mb-10">
+                                            <div class="mt-0 text-start"> <a href="project-details.html" class="box-title mb-0 mt-1 mb-3 font-w600 fs-18">{{project.category}}</a>
+                                               <input type="hidden" id="id_{{job.name}}" value="{{job.name}}">
+                                                <h4>{{job.name}}</h4>
+                                                <br>
+                                                <input type="hidden" id="id_{{job.description}}" value="{{job.description}}">
+                                                <span class="fs-13  mt-2 text-muted">{{job.description}}</span>
+                                                <br>
+                                                <input type="hidden" id="id_{{job.price}}" value="{{job.price}}">
+                                                <span class="fs-13  mt-2 text-muted">{{job.price}}</span>
+                                                <br>
+                                                <input type="hidden" id="id_{{job.category}}" value="{{job.category}}">
+                                                <span class="fs-13  mt-2 text-muted">{{job.category}}</span>
+                                                <br>
+                                                <input type="hidden" id="id_{{job.uploaded}}" value="{{job.uploaded}}">
+                                                 <input type="hidden" id="id_{{job.id}}" value="{{job.id}}">
+                                                <span class="fs-13  mt-2 text-muted">{{job.uploaded}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-footer">
+                                    <div class="d-flex align-items-center">
+                                        <div class="ms-auto mt-3 mt-sm-0">
+                                            <div class="d-flex">
+                                                <div class="gr-btn mt-15"> <a href="{% url 'deletejob' job.id %}"> <button class="btn btn-danger btn-lg mr-15 fs-16">Delete</button></a> <a href="#"onclick="myfunction()" data-toggle="modal" data-target="#edit"><button class="btn btn-primary btn-lg fs-16" >Edit</button> </a></div>
+                                                <script>
+                                                    function myfunction(){
+                                                        name = document.getElementById("id_{{job.name}}").value;
+                                                        uploaded = document.getElementById("id_{{job.uploaded}}").value;
+                                                        desc = document.getElementById("id_{{job.description}}").value;
+                                                        category = document.getElementById("id_{{job.category}}").value;
+                                                        price = document.getElementById("id_{{job.price}}").value;
+                                                        id = document.getElementById("id_{{job.id}}").value;
+
+                                                        document.getElementById("jobid").value = id;
+                                                        document.getElementById("price").value = price;
+                                                        document.getElementById("title").value = name;
+                                                        document.getElementById("uploaded").value = uploaded;
+                                                        document.getElementById("description").value = desc;
+                                                        document.getElementById("category").value = category;
+                                                    }
+                                                </script>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {%endfor%}
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div id="edit" class="modal custom-modal fade" role="dialog">
+                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Edit job</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="POST" enctype="multipart/form-data" action="{%url 'viewjobs'%}">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12 mb-24">
+                                    <div class="form-group"> <label class="form-label">Job Title</label> <input name="title" id="title" class="form-control"> </div>
+                                </div>
+                                <input type="hidden" name="jobid" id="jobid">
+                                <div class="col-md-6 col-sm-12 mb-24">
+                                    <div class="form-group"> <label class="form-label">Date Uploaded</label> <input name="uploaded" id="uploaded" type="datetime-local" class="form-control"> </div>
+                                </div>
+
+                            </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12 mb-24">
+                                        <div class="form-group"> <label class="form-label">Job Description</label> <input name="description" id="description" class="form-control"> </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 mb-24">
+                                        <div class="form-group"> <label class="form-label">Job Category</label> <input name="jobcategory" id="jobcategory" class="form-control" > </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 mb-24">
+                                        <div class="form-group"> <label class="form-label">Price</label> <input name="price" id="price" class="form-control" > </div>
+                                    </div>
+                                </div>
+                            <div class="gr-btn mt-15"> <button type="submit" class="btn btn-danger btn-lg mr-15 fs-16">CLEAR</button> <button type="submit" class="btn btn-primary btn-lg fs-16" >SUBMIT</button> </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <!-- END MAIN CONTENT -->
+{%endblock content%}

@@ -1,0 +1,101 @@
+{%extends 'base.html'%}
+{%load static%}
+    {%block content%}
+    <div class="main">
+
+        <div class="main-content project">
+            <div class="row">
+                <div class="col-9 col-xl-7 col-md-8 col-sm-12">
+                    <div class="box card-box">
+                        <div class="icon-box bg-color-6 d-block">
+
+                            <div class="content text-center color-6">
+                                <h5 class="title-box fs-17 font-w500">Total jobs available</h5>
+                                <div class="themesflat-counter fs-18 font-wb">
+                                    <span class="number" data-from="0" data-to="309" data-speed="2500" data-inviewport="yes">{{projects.count}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="icon-box bg-color-7 d-block">
+
+                            <div class="content text-center color-7">
+                                <h5 class="title-box fs-17 font-w500">Job bids sent</h5>
+                                <div class="themesflat-counter fs-18 font-wb">
+                                    <span class="number" data-from="0" data-to="309" data-speed="2500" data-inviewport="yes">{{totalbids}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="icon-box bg-color-8 d-block">
+
+                            <div class="content text-center color-8">
+                                <h5 class="title-box fs-17 font-w500">accepted bids</h5>
+                                <div class="themesflat-counter fs-18 font-wb">
+                                    <span class="number" data-from="0" data-to="309" data-speed="2500" data-inviewport="yes">{{acceptedbids.count}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="icon-box bg-color-9 d-block">
+
+                            <div class="content text-center color-9">
+                                <h5 class="title-box fs-17 font-w500">Profile views</h5>
+                                <div class="themesflat-counter fs-18 font-wb">
+                                    <span class="number" data-from="0" data-to="309" data-speed="2500" data-inviewport="yes">0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 col-xl-5 col-md-4 col-sm-12">
+                    <div class="box h-100 d-flex align-items-center">
+                        <a class="create d-flex bg-primary justify-content-center" href="#">
+                            <div class="icon color-white pt-4 pr-8">
+                                <i class='bx bx-plus-circle'></i>
+                            </div>
+                            <div class="content">
+                                <h5 class="color-white">View community</h5>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <div class="box f-height">
+                        <div class="box-header d-flex justify-content-between">
+                            <h3 class="mt-9 fs-22">Recent jobs available in your stack</h3>
+                        </div>
+                        {% for project in projects %}
+                            <div class="box left-dot">
+                                <div class="box-body">
+                                    <div class="row">
+                                        <div class="col-12 mb-10">
+                                            <div class="mt-0 text-start"> {{project.category}}
+                                                <h4>{{project.name}}</h4>
+                                                <span class="fs-13  mt-2 text-muted">{{project.description}}</span>
+                                            </div>
+                                            {% if project.category == 'Adobe XD'%}
+                                            <img src="{% static 'accounts/images/icon/experience.png" alt="img" class="img-box">
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-footer">
+                                    <div class="d-flex align-items-center">
+                                        <div class="ms-auto mt-3 mt-sm-0">
+                                            <div class="d-flex">
+                                                <div class="task-btn bg-danger-1 text-danger btn-link fs-14" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Project Priority">High</div> <a class="btn btn-outline-light  text-muted pd-0 fs-34" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class='bx bx-dots-vertical-rounded' ></i></a>
+                                                <ul class="dropdown-menu " role="menu">
+                                                    <li><a href="{% url 'submitbid' project.id %}"><i class='bx bx-plus-circle' ></i>Bid</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {%endfor%}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {%endblock content%}

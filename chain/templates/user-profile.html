@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{%load static%}
+
+{% block content%}
+    <!-- MAIN CONTENT -->
+    <div class="main">
+
+        <div class="main-content project">
+            <div class="row">
+                <div class="col-12">
+                    <div class="box">
+                        <div class="box-body">
+                            <form method="POST" enctype="multipart/form-data" action="{% url 'editprofile'} ">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12 mb-24">
+                                    <div class="form-group"> <label class="form-label">Username</label> <input name="name" class="form-control" placeholder="john doe"> </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12 mb-24">
+                                    <div class="form-group"> <label class="form-label">Email</label> <input name="email" class="form-control" placeholder="johndoe@gmail.com"> </div>
+                                </div>
+
+                            </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12 mb-24">
+                                        <div class="form-group"> <label class="form-label">password</label> <input name="password" type="password" class="form-control" placeholder="xxxx"> </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 mb-24">
+                                        <div class="form-group"> <label class="form-label">phone number</label> <input name="phone" type="number" class="form-control" placeholder="0812xxxxx99"> </div>
+                                    </div>
+                                </div>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12 mb-24">
+                                    <div class="form-group"> <label class="form-label">Profile picture</label> <input  type="file" name="image" class="form-control" > </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12 mb-24">
+                                    <div class="form-group"> <label class="form-label">Github link</label> <input name="link" class="form-control" placeholder="enter github link"> </div>
+                                </div>
+                            </div>
+                            <div class="gr-btn mt-15"> <button type="submit" class="btn btn-danger btn-lg mr-15 fs-16">CLEAR</button> <button type="submit" class="btn btn-primary btn-lg fs-16" >SUBMIT</button> </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+    <!-- END MAIN CONTENT -->
+{%endblock content%}

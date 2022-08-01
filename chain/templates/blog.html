@@ -1,0 +1,188 @@
+{% load static%}
+<html lang="zxx">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+   <title>Chain community </title>
+    <!-- bootstrap.min css -->
+    <link rel="stylesheet" href="{% static 'community/plugins/bootstrap/css/bootstrap.css'%}">
+    <!-- Icofont Css -->
+    <link rel="stylesheet" href="{% static 'community/plugins/fontawesome/css/all.css'%}">
+    <!-- animate.css -->
+    <link rel="stylesheet" href="{% static 'community/plugins/animate-css/animate.css'%}">
+    <!-- Icofont -->
+    <link rel="stylesheet" href="{% static 'community/plugins/icofont/icofont.css'%}">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="{% static 'community/css/style.css'%}">
+
+
+</head>
+
+
+<body data-spy="scroll" data-target=".fixed-top">
+
+
+<nav class="navbar navbar-expand-lg fixed-top trans-navigation">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home'%}">
+                <span class="ms-2 d-none d-sm-block fw-bold">Chain</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon">
+                    <i class="fa fa-bars"></i>
+                </span>
+              </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+                <ul class="navbar-nav ">
+                    <li class="nav-item">
+                        <a class="nav-link smoth-scroll" href="{% url 'blog'%}">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link smoth-scroll" href="{% url 'anon'%}">Anon</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link smoth-scroll" href="{% url 'postquestion'%}">Ask a question</a>
+                    </li>
+                    {% if request.user.bio.role == 'client' %}
+                    <li class="nav-item">
+                        <a class="nav-link smoth-scroll" href="{% url 'clientdashboard'%}">Dashboard</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link smoth-scroll" href="{% url 'dashboard'%}">Dashboard</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--MAIN HEADER AREA END -->
+
+<section class="section blog-wrap ">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                    <div class="row">
+                        {% for blog in blogposts %}
+                        <div class="col-lg-12">
+                            <div class="blog-post">
+                                <img src="{{blog.image.url}}" alt="" class="img-fluid">
+                                <div class="mt-4 mb-3 d-flex">
+                                    <div class="post-author mr-3">
+                                        <i class="fa fa-user"></i>
+                                        <span class="h6 text-uppercase">{{blog.poster.username}}</span>
+                                    </div>
+
+                                    <div class="post-info">
+                                        <i class="fa fa-calendar-check"></i>
+                                        <span>{{blog.uploaded}}</span>
+                                    </div>
+                                </div>
+                                <a href="" class="h4 ">{{blog.title}}</a>
+                                <br>
+                                <a href="{% url 'blogpost' blog.id %}" class="read-more">Read More <i class="fa fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+            </div>
+            <div class="col-lg-4">
+                                    <div class="row">
+
+                        <div class="col-lg-12">
+                            <div class="sidebar-widget category">
+                                <h5 class="mb-3">Category</h5>
+                                <ul class="list-styled">
+                                    <a href="{%url 'filter' 'marketing' %}"><li>Marketing</li></a>
+                                    <a href="{%url 'filter' 'SEO' %}"><li>SEO</li></a>
+                                    <a href="{%url 'filter' 'web design' %}"><li>Web Design</li></a>
+                                    <a href="{%url 'filter' 'backend' %}"><li>back end development</li></a>
+                                    <a href="{%url 'filter' 'computer theory' %}"><li>Computer theory</li></a>
+                                    <a href="{%url 'filter' 'hardware' %}"><li>hardware</li></a>
+                                    <a href="{%url 'filter' 'dependencies' %}"><li>dependencies</li></a>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+        </div>
+    </div>
+</section>
+
+<!--  FOOTER AREA START  -->
+<section id="footer" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-sm-8 col-md-8">
+                <div class="footer-widget footer-link">
+                     <h4>Grow with the <br> Chain community.</h4>
+                    <p>This is basically my attempt at a stack overflow/freelancer/blind :)</p>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-sm-6 col-md-6">
+                <div class="footer-widget footer-link">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">None</a></li>
+                        <li><a href="#">Of</a></li>
+                        <li><a href="#">These</a></li>
+                        <li><a href="#">Links</a></li>
+                        <li><a href="#">Are</a></li>
+                        <li><a href="#">Real</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 col-md-6">
+                <div class="footer-widget footer-text">
+                    <h4>Our location</h4>
+                    <p ><span>Mail:</span><a href="mailto:oladipupoemmanuel85@gmail.com"> oladipupoemmanuel85@gmail.com</a></p>
+                    <p><span>Phone :</span>+234 8129476743</p>
+                    <p><span>Location:</span> 455 West Orchard Street Kings Mountain, NC 28086,NOC building</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="footer-copy">
+                    © 2018 Akerele Oladipupo.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--  FOOTER AREA END  -->
+   
+
+    <!-- 
+    Essential Scripts
+    =====================================-->
+
+    
+    <!-- Main jQuery -->
+    <script src="{% static 'community/plugins/jquery/jquery.min.js'%}"></script>
+    <!-- Bootstrap 4.3.1 -->
+    <script src="{% static 'community/plugins/bootstrap/js/popper.min.js'%}"></script>
+    <script src="{% static 'community/plugins/bootstrap/js/bootstrap.min.js'%}"></script>
+   <!-- Woow animtaion -->
+    <script src="{% static 'community/plugins/counterup/wow.min.js'%}"></script>
+    <script src="{% static 'community/plugins/counterup/jquery.easing.1.3.js'%}"></script>
+     <!-- Counterup -->
+    <script src="{% static 'community/plugins/counterup/jquery.waypoints.js'%}"></script>
+    <script src="{% static 'community/plugins/counterup/jquery.counterup.min.js'%}"></script>
+
+    <!-- Google Map -->
+    <script src="{% static 'community/plugins/google-map/gmap3.min.js'%}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>   
+    <!-- Contact Form -->
+    <script src="{% static 'community/plugins/jquery/contact.js'%}"></script>
+    <script src="{% static 'community/js/custom.js'%}"></script>
+
+  </body>
+  </html>

@@ -1,0 +1,322 @@
+{% load static%}
+<html lang="en-US" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ===============================================-->
+    <!--    Document Title-->
+    <!-- ===============================================-->
+    <title>Chain</title>
+
+    <!-- ===============================================-->
+    <!--    Favicons-->
+    <!-- ===============================================-->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'home/assets/img/favicons/apple-touch-icon.png'%}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'home/assets/img/favicons/favicon-32x32.png'%}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'home/assets/img/favicons/favicon-16x16.png'%}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'home/assets/img/favicons/favicon.ico'%}">
+    <link rel="manifest" href="{% static 'home/assets/img/favicons/manifest.json'%}">
+    <meta name="msapplication-TileImage" content="{% static 'home/assets/img/favicons/mstile-150x150.png'%}">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- ===============================================-->
+    <!--    Stylesheets-->
+    <!-- ===============================================-->
+    <link href="{% static 'home/assets/css/theme.min.css'%}" rel="stylesheet" />
+    <link href="{% static 'home/vendors/swiper/swiper-bundle.min.css'%}" rel="stylesheet">
+  </head>
+
+  <body data-bs-spy="scroll" data-bs-target="#navbar">
+
+    <main class="main" id="top">
+      <nav class="navbar navbar-expand-xl navbar-light fixed-top px-0 pb-0 mb-2" id="navbar" data-navbar-darken-on-scroll="white">
+        <div class="container-fluid align-items-center py-2"><a class="navbar-brand flex-center" href="{% url 'home'%}"><img src="{% static 'home/assets/img/chain.png'%}" height="60" width="100" alt="chain" /><span class="ms-2 d-none d-sm-block fw-bold"></span></a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon">chain</span></button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto mt-3 mt-xl-0">
+              <li class="nav-item ps-0 ps-xl-4 ms-2"><a class="nav-link fs-2 fw-medium" href="{% url 'signin'%}">Sign in </a></li>
+              <li class="nav-item ps-0 ps-xl-4 ms-2"><a class="nav-link fs-2 fw-medium" href="{% url 'clientsignup'%}">Sign up as a client</a></li>
+              <li class="nav-item ps-0 ps-xl-4 ms-2"><a class="nav-link fs-2 fw-medium" href="{% url 'signup'%}">Sign up as a developer </a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- ============================================-->
+      <!-- <section> begin ============================-->
+      <section class="pt-8 py-lg-0" id="hero">
+        <div class="container-xxl">
+          <div class="row align-items-center min-vh-lg-100">
+            <div class="col-lg order-lg-1 text-center"><img class="img-fluid" src="{% static 'home/assets/img/illustrations/hero.png'%}" alt="" /></div>
+            <div class="col-lg mt-5 mt-lg-0">
+              <h1 class="lh-sm font-cursive fw-medium fs-6 fs-sm-8 fs-md-11 fs-lg-9 fs-xl-11 fs-xxl-12">An IT community for <br class="d.none d-xl-block" /> open collaboration</h1>
+              <p class="mt-4 fs-2 fs-md-4 lh-sm">A community that connects clients with the right developers for their projects.</p><button class="btn btn-success mt-4">Sign in</button>
+            </div>
+          </div>
+        </div><!-- end of .container-->
+      </section><!-- <section> close ============================-->
+      <!-- ============================================-->
+
+
+
+      <!-- ============================================-->
+      <!-- <section> begin ============================-->
+      <section class="pt-xxl-0" id="features">
+        <div class="container-xxl">
+          <div class="row justify-content-center text-center">
+            <div class="col-lg-10 col-xl-8">
+              <h1 class="display-6 font-cursive">Reimagining what it means to work</h1>
+              <p class="fs-md-1 mt-4">Teams and communities using Open Enterprise fundamentally unlock a reality of work that reimagines how people engage in economic opportunity, meeting the demands and expectations of a modern organization.</p>
+            </div>
+          </div>
+          <div class="row row-cols-1 row-cols-xl-3 g-4 mt-3 text-center">
+            <div class="col-12 col-md-6">
+              <div class="card py-md-6 px-md-4 mt-3 h-100 box-shadow-all border-0">
+                <div class="card-body"><img src="{% static 'home/assets/img/icons/icon1.png'%}" alt="" />
+                  <h3 class="py-3">Connect with others</h3>
+                  <p class="lead mb-0">Connect with like minded developers. </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="card py-md-6 px-md-4 mt-3 h-100 box-shadow-all border-0">
+                <div class="card-body"><img src="{% static 'home/assets/img/icons/icon2.png'%}" alt="" />
+                  <h3 class="py-3">Ask technical questions</h3>
+                  <p class="lead mb-0">Make use of our community to ask experienced developers career ot technical questions.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="card py-md-6 px-md-4 mt-3 h-100 box-shadow-all border-0">
+                <div class="card-body"><img src="{% static 'home/assets/img/icons/icon3.png'%}" alt="" />
+                  <h3 class="py-3">Showcase your work</h3>
+                  <p class="lead mb-0">Upload your portfolio for clients to see</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- end of .container-->
+      </section><!-- <section> close ============================-->
+      <!-- ============================================-->
+
+
+
+      <!-- ============================================-->
+      <!-- <section> begin ============================-->
+      <section id="contribute">
+        <div class="container-xxl">
+          <div class="row align-items-center">
+            <div class="col-md-6"><img src="{% static 'home/assets/img/icons/icon1.png'%}" alt="" />
+              <h1 class="display-5 lh-sm my-4 font-cursive">Bid for jobs in your given stack</h1>
+              <p class="fs-1">developers are alerted of potential jobs once they are uploaded</p>
+            </div>
+            <div class="col-md-6 col-xl-4 offset-xl-1">
+              <div class="card box-shadow-rb my-4">
+                <div class="card-body my-3 mx-4">
+                  <h1 class="mb-4 pb-2">Developers</h1>
+                  <div class="d-flex align-items-center mt-3"><img class="rounded-circle" src="{% static 'home/assets/img/gallery/user1.png'%}" alt="" height="70" />
+                    <div class="ms-3">
+                      <h3>Dillon Kydd</h3>
+                      <p class="mb-0">100 bids accepted</p>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center mt-3"><img class="rounded-circle" src="{% static 'home/assets/img/gallery/user2.png'%}" alt="" height="70" />
+                    <div class="ms-3">
+                      <h3>Anna Olsen</h3>
+                      <p class="mb-0">80 bids accepted</p>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center mt-3"><img class="rounded-circle" src="{% static 'home/assets/img/gallery/user3.png'%}" alt="" height="70" />
+                    <div class="ms-3">
+                      <h3>Kas Moss</h3>
+                      <p class="mb-0">70 bids accepted</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- end of .container-->
+      </section><!-- <section> close ============================-->
+      <!-- ============================================-->
+
+
+
+      <!-- ============================================-->
+      <!-- <section> begin ============================-->
+      <section>
+        <div class="container-xxl">
+          <div class="row flex-between-center">
+            <div class="col-md-6 order-md-1"><img src="{% static 'home/assets/img/icons/icon2.png'%}" alt="" />
+              <h1 class="display-5 lh-sm my-4 font-cursive">Kickstart your business idea</h1>
+              <p class="fs-1">Kickstart your business idea by taking your business online</p>
+            </div>
+            <div class="col-md-6 col-xl-5">
+              <div class="card my-4">
+                <div class="card-body p-0 p-lg-3 my-3 mx-4">
+                  <div class="card-title">
+                    <div class="d-flex align-items-center mt-3"><img class="rounded-circle" src="{% static 'home/assets/img/gallery/user4.png'%}" alt="" height="70" />
+                      <div class="ms-3">
+                        <h3>Jassir Jonis</h3>
+                        <p class="mb-0">Apparel line owner</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-text mt-4">
+                    <p>Chain helped me find the right developers to take my business online.</p>
+                  </div>
+                  <div class="card-text mt-4">
+                    <div class="row gx-4">
+                      <div class="col">
+                        <p class="mb-1">Jobs uploaded</p>
+                        <h3>23</h3>
+                      </div>
+                      <div class="col">
+                        <p class="mb-1">Bids reviewed</p>
+                        <h3>120</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-3 pt-2"><a href="{%url 'clientsignup'%}"><button class="btn btn-dark btn-lg w-100">Get started as a client</button></a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- end of .container-->
+      </section><!-- <section> close ============================-->
+      <!-- ============================================-->
+
+
+
+      <!-- ============================================-->
+      <!-- <section> begin ============================-->
+      <section>
+        <div class="container-xxl">
+          <div class="row align-items-center gx-1">
+            <div class="col-xl-6"><img src="{% static 'home/assets/img/icons/icon3.png'%}" alt="" />
+              <h1 class="display-5 lh-sm my-4 font-cursive">Engage other IT professionals</h1>
+              <p class="fs-1">Connect with IT professionals for career or technical advice</p>
+            </div>
+            <div class="col-xl-6">
+              <div class="row justify-content-center gx-4">
+                <div class="col-md-10">
+                  <div class="card box-shadow-b p-2 p-md-3">
+                    <div class="card-body flex-between-center pb-0">
+                      <h5 class="mb-0">Ask technical questions on bugs</h5><span class="badge rounded-pill bg-success p-2 fs-0">1 SHARE</span>
+                    </div>
+                    <div class="card-body">
+                      <p class="mb-0">Get verified answers upvoted by the community</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-6 mt-4">
+                  <div class="card px-3 py-4 bg-warning">
+                    <div class="card-body">
+                      <h2>3 answers</h2>
+                      <div class="applicant d-flex justify-content-between text-1000">
+                        <div class="d-flex align-items-center"><img class="rounded-circle my-2 me-2 me-md-3" src="{% static 'home/assets/img/gallery/user5.png'%}" alt="" height="40" />
+                          <p class="fs-1 fs-md-2 mb-0 fw-semi-bold">Jason Kwon</p>
+                        </div>
+                        <div class="d-flex align-items-center"><img class="star" src="{% static 'home/assets/img/icons/star.svg'%}" alt="" />
+                          <p class="mb-0 mx-2 fw-medium">4.8</p>
+                        </div>
+                      </div>
+                      <div class="applicant d-flex justify-content-between text-1000">
+                        <div class="d-flex align-items-center"><img class="rounded-circle my-2 me-2 me-md-3" src="{% static 'home/assets/img/gallery/user6.png'%}" alt="" height="40" />
+                          <p class="fs-1 fs-md-2 mb-0 fw-semi-bold">Alex Rose</p>
+                        </div>
+                        <div class="d-flex align-items-center"><img class="star" src="{% static 'home/assets/img/icons/star.svg'%}" alt="" />
+                          <p class="mb-0 mx-2 fw-medium">4.8</p>
+                        </div>
+                      </div>
+                      <div class="applicant d-flex justify-content-between text-1000">
+                        <div class="d-flex align-items-center"><img class="rounded-circle my-2 me-2 me-md-3" src="{% static 'home/assets/img/gallery/user7.png'%}" alt="" height="40" />
+                          <p class="fs-1 fs-md-2 mb-0 fw-semi-bold">Lizzie Ulrich</p>
+                        </div>
+                        <div class="d-flex align-items-center"><img class="star" src="{% static 'home/assets/img/icons/star.svg'%}" alt="" />
+                          <p class="mb-0 mx-2 fw-medium">4.8</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-5">
+                  <div class="card p-2 mt-4 mt-md-5 border-success">
+                    <div class="card-body">
+                      <div class="card-text text-center"><img class="rounded-circle" src="{% static 'home/assets/img/gallery/axel.png'%}" alt="" height="70" />
+                        <h4 class="mt-2 mb-1">Axel Rose </h4>
+                        <p class="text-secondary">UX Designer</p>
+                      </div>
+                      <div class="d-flex text-1000">
+                        <p class="mb-0 flex-1">4 questions</p>
+                        <div class="d-flex align-items-center"><img class="star" src="{% static 'home/assets/img/icons/star.svg'%}" alt="" />
+                          <p class="mb-0 mx-2 fw-medium">4.8</p>
+                        </div>
+                      </div><a href="{%url 'signup'%}"> <button class="btn btn-lg btn-dark w-100 mt-3">View community</button></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- end of .container-->
+      </section><!-- <section> close ============================-->
+      <!-- ============================================-->
+
+
+
+
+      <!-- <section> begin ============================-->
+      <section id="rea">
+        <div class="container-xxl">
+          <div class="row align-items-center">
+            <div class="col-lg order-lg-1 text-center"><img class="img-fluid" src="{% static 'home/assets/img/illustrations/hero2.png'%}" alt="" /></div>
+            <div class="col-lg mt-5 mt-lg-0">
+              <h1 class="lh-sm font-cursive fw-medium display-5">Contact us</h1>
+              <p class="mt-4 fs-1">If you have any questions shoot us an email and we will try to respond as soon as we can!</p><a href="mailto:oladipupoemmanuel85@gmail.com"><button class="btn btn-success mt-4" >Contact us</button></a>
+            </div>
+          </div>
+        </div><!-- end of .container-->
+      </section><!-- <section> close ============================-->
+      <!-- ============================================-->
+
+
+
+      <!-- ============================================-->
+      <!-- <section> begin ============================-->
+      <section class="py-4">
+        <div class="container-xxl">
+          <div class="row justify-content-center align-items-center">
+            <div class="col-lg-6 text-sm-center text-lg-start">
+              <h2 class="mb-lg-0">Chain</h2>
+            </div>
+            <div class="col-lg-6 text-sm-center text-lg-end">
+              <p class="mb-0">&copy; 2022 Akerele Oladipupo. template by <a href="https://themewagon.com/">ThemeWagon</a></p>
+            </div>
+          </div>
+        </div><!-- end of .container-->
+      </section><!-- <section> close ============================-->
+      <!-- ============================================-->
+
+    </main><!-- ===============================================-->
+    <!--    End of Main Content-->
+    <!-- ===============================================-->
+
+
+
+    <!-- ===============================================-->
+    <!--    JavaScripts-->
+    <!-- ===============================================-->
+    <script src="{% static 'home/vendors/@popperjs/popper.min.js'%}"></script>
+    <script src="{% static 'home/vendors/bootstrap/bootstrap.min.js'%}"></script>
+    <script src="{% static 'home/vendors/is/is.min.js'%}"></script>
+    <script src="{% static 'home/vendors/swiper/swiper-bundle.min.js'%}"> </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+    <script src="{% static 'home/assets/js/theme.js'%}"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&amp;family=Roboto:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet">
+  </body>
+
+</html>

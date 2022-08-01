@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{%load static%}
+
+{% block content%}
+    <!-- MAIN CONTENT -->
+    <div class="main">
+
+        <div class="main-content project">
+            <div class="row">
+                <div class="col-12">
+                    <div class="box">
+                        <div class="box-body">
+                            <h3>Add item to portfolio</h3>
+                            <form method="POST" action="{% url 'uploadproject'}">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12 mb-24">
+                                    <div class="form-group"> <label class="form-label">Project Title</label> <input name="name" class="form-control" placeholder="2569852"> </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12 mb-24">
+                                    <div class="form-group"> <label class="form-label">Stacks used during development</label> <input name="stack" class="form-control" placeholder="e.g python, django, redis"> </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12 mb-24">
+                                    <div class="form-group"> <label class="form-label">Project description</label> <input name="description" class="form-control" placeholder="enter project description"> </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12 mb-24">
+                                    <div class="form-group"> <label class="form-label">Github link</label> <input name="link" class="form-control" placeholder="enter github link"> </div>
+                                </div>
+                            </div>
+                            <div class="gr-btn mt-15"> <button type="submit" class="btn btn-danger btn-lg mr-15 fs-16">CLEAR</button> <button type="submit" class="btn btn-primary btn-lg fs-16" >SUBMIT</button> </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <div class="box f-height">
+                        <div class="box-header d-flex justify-content-between">
+                            <h3 class="mt-9 fs-22">Portfolio items</h3>
+                        </div>
+                        {% for project in portfolio %}
+                            <div class="box left-dot">
+                                <div class="box-body">
+                                    <div class="row">
+                                        <input type="hidden" id="id_{{project.name}}" value="{{project.name}}">
+                                         <input type="hidden" id="id_{{project.id}}" value="{{project.id}}">
+                                        <h4>{{project.name}}</h4>
+                                        <br>
+                                        <input type="hidden" id="id_{{project.description}}" value="{{project.description}}">
+                                        <span class="fs-13  mt-2 text-muted">{{project.description}}</span>
+                                        <br>
+                                        <input type="hidden" id="id_{{project.github}}" value="{{project.github}}">
+                                        <span class="fs-13  mt-2 text-muted">{{project.github}}</span>
+                                        <br>
+                                        <input type="hidden" id="id_{{project.uploaded}}" value="{{project.uploaded}}">
+                                        <span class="fs-13  mt-2 text-muted">{{project.uploaded}}</span>
+                                    </div>
+                                </div>
+                                <div class="box-footer">
+                                    <div class="d-flex align-items-center">
+                                        <div class="ms-auto mt-3 mt-sm-0">
+                                            <div class="d-flex">
+                                                <div class="gr-btn mt-15"> <a href="{% url 'deletefromportfolio' project.id %}"> <button class="btn btn-danger btn-lg mr-15 fs-16">Delete</button></a> <button onclick="myfunction{{project.id}}()"  data-toggle="modal" data-target="#edit" class="btn btn-primary btn-lg fs-16" >Edit</button> </div>
+                                                <script>
+                                                    function myfunction{{project.id}}(){
+                                                        name = document.getElementById("id_{{project.name}}").value;
+                                                        id = document.getElementById("id_{{project.id}}").value;
+                                                        desc = document.getElementById("id_{{project.description}}").value;
+                                                        github = document.getElementById("id_{{project.github}}").value;
+                                                        uploaded = document.getElementById("id_{{project.uploaded}}").value;
+
+                                                        document.getElementById("title").value = name;
+                                                        document.getElementById("id").value = id;
+                                                        document.getElementById("description").value = desc;
+                                                        document.getElementById("github").value = github;
+                                                        document.getElementById("uploaded").value = uploaded;
+                                                    }
+                                                </script>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {%endfor%}
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div id="edit" class="modal custom-modal fade" role="dialog">
+                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Edit portfolio item</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="POST" enctype="multipart/form-data" action="">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12 mb-24">
+                                    <div class="form-group"> <label class="form-label">Project Title</label> <input name="title" id="title" class="form-control" > </div>
+                                </div>
+                                <input type="hidden" name="id" id="id">
+                                <div class="col-md-6 col-sm-12 mb-24">
+                                    <div class="form-group"> <label class="form-label">Stacks used during development</label> <input name="stack" id="stack" class="form-control" > </div>
+                                </div>
+
+                            </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12 mb-24">
+                                        <div class="form-group"> <label class="form-label">Project description</label> <input name="description" id="description" class="form-control" > </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 mb-24">
+                                        <div class="form-group"> <label class="form-label">Github link</label> <input name="github" id="github" class="form-control" > </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 mb-24">
+                                        <div class="form-group"> <label class="form-label">Date Uploaded</label> <input name="uploaded" id="uploaded" type="datetime-local" class="form-control"> </div>
+                                    </div>
+                                </div>
+                            <div class="gr-btn mt-15"> <button type="submit" class="btn btn-danger btn-lg mr-15 fs-16">CLEAR</button> <button type="submit" class="btn btn-primary btn-lg fs-16" >SUBMIT</button> </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+{%endblock content%}
+
+

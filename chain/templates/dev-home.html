@@ -1,0 +1,207 @@
+{%extends 'base.html'%}
+{%load static%}
+    <!-- MAIN CONTENT -->
+    {%block content%}
+    <div class="main">
+
+        <div class="main-content dashboard">
+            <div class="row">
+                <div class="col-12">
+                    <div class="box card-box">
+                        <div class="icon-box bg-color-1">
+                            <a class="create d-flex" href="#" data-toggle="modal" data-target="#edit_profile">
+                                <div class="icon bg-icon-1">
+                                    <i class='bx bxs-cog'></i>
+                                </div>
+                                <div class="content d-flex align-items-center">
+                                    <h5 class="title-box">Edit profile</h5>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="icon-box bg-color-9">
+                            <a class="create d-flex" href="#" data-toggle="modal" data-target="#delete_profile">
+                                <div class="icon bg-icon-9">
+                                    <i class='bx bx-angry'></i>
+                                </div>
+                                <div class="content d-flex align-items-center">
+                                    <h5 class="title-box">Delete profile</h5>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="icon-box bg-color-3">
+                            <a class="create d-flex" href="calendar.html">
+                                <div class="icon bg-icon-3">
+                                    <i class="bx bx-code"></i>
+                                </div>
+                                <div class="content">
+                                    <h5 class="title-box">View portfolio</h5>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="icon-box bg-color-4">
+                            <a class="create d-flex" href="#">
+                                <div class="icon bg-blue">
+                                    <i class="bx bx-briefcase"></i>
+                                </div>
+                                <div class="content d-flex align-items-center">
+                                    <h5 class="color-white">Browse available jobs</h5>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-6 col-md-6 col-sm-12 mb-0">
+                    <div class="row">
+                        <div class="col-6 col-xl-12 col-sm-12">
+                            <div class="box">
+                                <div class="box-body d-flex pb-0">
+                                    <div class="me-auto">
+                                        <h5 class="box-title">Accepted bids</h5>
+                                        <div class="d-flex align-items-center">
+                                            <h4 class="mb-0 font-wb fs-30 mt-23">{{acceptedbids.count}}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-xl-12 col-sm-12">
+                            <div class="box">
+                                <div class="box-body d-flex pb-0">
+                                    <div class="me-auto">
+                                        <h5 class="box-title ">Pending bids</h5>
+                                        <div class="d-flex align-items-center">
+                                            <h4 class="mb-0 font-wb fs-30 mt-23">{{pendingbids.count}}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-xl-12 col-sm-12">
+                            <div class="box">
+                                <div class="box-body d-flex pb-0">
+                                    <div class="me-auto">
+                                        <h5 class="box-title ">Portfolio items</h5>
+                                        <div class="d-flex align-items-center">
+                                            <h4 class="mb-0 font-wb fs-30 mt-23">{{portfolio.count}}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6 col-sm-12 mb-0">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="box box-manage">
+                                <div class="box-body d-flex pd-7 pb-0">
+                                    <div class="me-auto w-55">
+                                        <h5 class="card-title text-white fs-30 font-w500 mt-4">Collaborate with other developers </h5>
+                                        <p class="mb-0 text-o7 fs-18 font-w500 pb-11">Collaboration is a feature coming soon to the chain community</p>
+                                    </div>
+                                    <div class="btn-now">
+                                        <a class="h6 font-w500" href="{% url 'blog' %}"><span>View</span></a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="box">
+                        <div class="box-header  pt-0 align-items-start">
+                            <div class="me-auto">
+                                <h4 class="card-title mb-0 fs-22">Recent Activity</h4>
+                                <p class="mt-6 fs-14 mb-14">As of {% now "jS F Y H:i" %}</p>
+                            </div>
+                        </div>
+                        <div class="box-body pb-0">
+                            <ul class="message mb-2">
+                                {% for activity in activities %}
+                                <li class="dlab-chat-user">
+                                    <div class="d-flex bd-highlight">
+                                        <div class="user_info">
+                                            <p class="mt-6 fs-14 mb-14">{{activity.action}}</p>>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="edit_profile" class="modal custom-modal fade" role="dialog">
+                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Edit profile</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="POST" enctype="multipart/form-data" action="{% url 'editprofile'} ">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12 mb-24">
+                                    <div class="form-group"> <label class="form-label">Username</label> <input name="name" class="form-control" placeholder="john doe"> </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12 mb-24">
+                                    <div class="form-group"> <label class="form-label">Email</label> <input name="email" class="form-control" placeholder="johndoe@gmail.com"> </div>
+                                </div>
+
+                            </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12 mb-24">
+                                        <div class="form-group"> <label class="form-label">password</label> <input name="password" type="password" class="form-control" placeholder="xxxx"> </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 mb-24">
+                                        <div class="form-group"> <label class="form-label">phone number</label> <input name="phone" type="number" class="form-control" placeholder="0812xxxxx99"> </div>
+                                    </div>
+                                </div>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12 mb-24">
+                                    <div class="form-group"> <label class="form-label">Profile picture</label> <input  type="file" name="image" class="form-control" > </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12 mb-24">
+                                    <div class="form-group"> <label class="form-label">Github link</label> <input name="link" class="form-control" placeholder="enter github link"> </div>
+                                </div>
+                            </div>
+                            <div class="gr-btn mt-15"> <button type="submit" class="btn btn-danger btn-lg mr-15 fs-16">CLEAR</button> <button type="submit" class="btn btn-primary btn-lg fs-16" >SUBMIT</button> </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal custom-modal fade" id="delete_profile" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="form-header">
+                                <h3>Delete Project</h3>
+                                <p>Are you sure want to delete?</p>
+                            </div>
+                            <div class="modal-btn delete-action">
+                                <div class="row">
+                                    <div class="col-6 mb-0">
+                                        <a href="{% url 'deleteprofile'%}" class="btn btn-primary continue-btn">Delete</a>
+                                    </div>
+                                    <div class="col-6 mb-0">
+                                        <a href="javascript:void(0);" data-dismiss="modal" class="btn btn-primary cancel-btn">Cancel</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {%endblock content%}
